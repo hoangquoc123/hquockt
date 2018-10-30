@@ -18,32 +18,29 @@ import java.util.List;
 /**
  * Created by Hoang Quyen on 9/26/2016.
  */
-public class DescriptionAdapter extends ArrayAdapter<Description>
-{
-
-    Activity context;
+public class DescriptionAdapter extends ArrayAdapter<Description> {
+    Context context;
     int resource;
     List<Description> objects;
-    public DescriptionAdapter(Activity context, int resource, List<Description> objects) {
 
+    public DescriptionAdapter(Context context, int resource, List<Description> objects) {
         super(context, resource, objects);
-        this.context=context;
-        this.objects=objects;
-        this.resource=resource;
+        this.context = context;
+        this.objects = objects;
+        this.resource = resource;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = this.context.getLayoutInflater();
-        View row = inflater.inflate(this.resource,null);
-        TextView txtName= (TextView) row.findViewById(R.id.editName);
-        TextView txtNotes= (TextView) row.findViewById(R.id.etxtNotes);
+        View row = LayoutInflater.from(context).inflate(this.resource, null);
+        TextView txtName = (TextView) row.findViewById(R.id.editName);
+        TextView txtNotes = (TextView) row.findViewById(R.id.etxtNotes);
         RadioButton rbtnLow = (RadioButton) row.findViewById(R.id.rbtnLow);
         RadioButton rbtnNoRmaL = (RadioButton) row.findViewById(R.id.rbtnNormal);
         RadioButton rbtnHigh = (RadioButton) row.findViewById(R.id.rbtnHigh);
         RadioButton rbtnTodo = (RadioButton) row.findViewById(R.id.rbtnToDo);
-        RadioButton rbtnDone= (RadioButton) row.findViewById(R.id.rbtxDone);
-        Button btnSave= (Button) row.findViewById(R.id.btnSave);
+        RadioButton rbtnDone = (RadioButton) row.findViewById(R.id.rbtxDone);
+        Button btnSave = (Button) row.findViewById(R.id.btnSave);
 
         Description description = this.objects.get(position);
         txtName.setText(description.getText());
