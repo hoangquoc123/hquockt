@@ -19,37 +19,31 @@ public class MainActivity extends AppCompatActivity {
     DescriptionAdapter descriptionAdapter;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         addControls();
         addEvent();
     }
 
     private void addEvent() {
-        GotoSreenAddItem();
-
+        GotoScreenAddItem();
     }
 
-    private void GotoSreenAddItem() {
+    private void GotoScreenAddItem() {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mh2 = new Intent(MainActivity.this, AddItem.class);
-                startActivity(mh2);
+                Intent intent = new Intent(MainActivity.this, AddItem.class);
+                startActivity(intent);
             }
         });
-}
+    }
 
     private void addControls() {
         btnAdd = (Button) findViewById(R.id.btnAdd);
-        lvDescription = (ListView) findViewById(R.id.lvDetail);
         listDescription = new ArrayList<>();
-      //  listDescription.add(Description.class.get)
     }
-
 }

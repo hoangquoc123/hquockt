@@ -14,15 +14,17 @@ import com.example.hoangquoc.adapter.DescriptionAdapter;
 import com.example.hoangquoc.model.Description;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AddItem extends AppCompatActivity {
 
-    ArrayList<Description> listDe = new ArrayList<Description>();
+    List<Description> listDe = new ArrayList<Description>();
     DescriptionAdapter descriptionAdapter = null;
     ListView lvDescription = null;
-    TextView txtName,txtNotes;
-    RadioGroup priGroup,staGroup;
+    TextView txtName, txtNotes;
+    RadioGroup priGroup, staGroup;
     Button btnSave;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,47 +32,30 @@ public class AddItem extends AppCompatActivity {
 
         addControls();
         addEvent();
-
-}
-
-    private void addEvent() {
-        GotoSreenAddItem();
-
     }
 
-    private void GotoSreenAddItem() {
+    private void addEvent() {
+        GotoScreenAddItem();
+    }
+
+    private void GotoScreenAddItem() {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mh2 = new Intent(AddItem.this, MainActivity.class);
-                startActivity(mh2);
-                xulyNhap();
+                Intent intent = new Intent(AddItem.this, MainActivity.class);
+                startActivity(intent);
             }
-
-
         });
     }
 
-    private void xulyNhap() {
-
-    }
-
     private void addControls() {
-         txtName= (TextView) findViewById(R.id.editName);
-         txtNotes= (TextView) findViewById(R.id.etxtNotes);
-         priGroup = (RadioGroup) findViewById(R.id.priGroup);
-         staGroup = (RadioGroup) findViewById(R.id.staGroup);
-        lvDescription = (ListView) findViewById(R.id.lvDetail);
+        txtName = (TextView) findViewById(R.id.editName);
+        txtNotes = (TextView) findViewById(R.id.etxtNotes);
+        priGroup = (RadioGroup) findViewById(R.id.priGroup);
+        staGroup = (RadioGroup) findViewById(R.id.staGroup);
         btnSave = (Button) findViewById(R.id.btnSave);
-         Description de = new Description();
-        descriptionAdapter = new DescriptionAdapter(this,R.layout.activity_add_item,lvDescription);
+        List<Description> descriptions = new ArrayList<>();
 
-
-
-
-
-        //lvDescription = (ListView) findViewById(R.id.lvDetail);
-       // listDescription = new ArrayList<>();
-        //  listDescription.add(Description.class.get)
+        descriptionAdapter = new DescriptionAdapter(null, R.layout.activity_add_item, descriptions);
     }
 }
